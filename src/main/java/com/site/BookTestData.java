@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@Slf4j
+@Slf4j // simple logging facade for java
 @Component
 public class BookTestData {
 
@@ -25,9 +25,9 @@ public class BookTestData {
 
     @PostConstruct
     public void initTestData() {
-        bookRepository.save(new Book("C#",1000));
-        bookRepository.save(new Book("C/C++",900));
-        bookRepository.save(new Book("Java",1100));
+        bookRepository.save(new Book("C#", 1000));
+        bookRepository.save(new Book("C and C++", 900));
+        bookRepository.save(new Book("Java", 1100));
     }
 
     /*@PostConstruct

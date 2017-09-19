@@ -5,13 +5,13 @@ import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
 
-@Data
+@Data // auto getter/setter (into targer)
 @Entity
-@Table(name="Book")
+@Table(name = "Book")
 public class Book implements Identifiable<Long> {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue // strategy
     private Long id;
 
     @Column
@@ -20,7 +20,8 @@ public class Book implements Identifiable<Long> {
     @Column
     private int size;
 
-    public Book(){}
+    public Book() {
+    }
 
     public Book(String name, int size) {
         this.name = name;
@@ -32,4 +33,7 @@ public class Book implements Identifiable<Long> {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
 }
