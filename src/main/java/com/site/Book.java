@@ -20,7 +20,7 @@ public class Book implements Identifiable<Long> {
     @Column
     private int size;
 
-    public Book(){};
+    public Book(){}
 
     public Book(String name, int size) {
         this.name = name;
