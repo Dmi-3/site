@@ -39,16 +39,16 @@ public class SiteApplicationTests {
 	@Test
 	public void createBook() throws Exception {
 		Book book = new Book("testBook", 0);
-		String requestBody = saveRequestJsonString(book);
+		String requestBody = saveRequestJsonString(book); // convert to JsonString submission
 
-		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders // test
 				.post("/books")
 				.accept(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 				.with(user(new User("admin","admin",
 				Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")))));
 
-		ResultActions resultActions = mockMvc.perform(requestBuilder);
+		ResultActions resultActions = mockMvc.perform(requestBuilder); // run the test
 
 		resultActions
 				.andExpect((status().isCreated()))

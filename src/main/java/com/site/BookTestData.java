@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Slf4j // simple logging facade for java
-@Component
+@Component //  register the class
 public class BookTestData {
 
     private final BookRepository bookRepository;
