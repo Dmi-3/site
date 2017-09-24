@@ -1,4 +1,4 @@
-package com.site;
+package com.site.book;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -18,4 +18,6 @@ public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
 
     @Query("select book from Book book where book.id=:id and book.size=:size")
     Book findByIdAndSize(@Param("id") Long id, @Param("size") int size);
+
+
 }

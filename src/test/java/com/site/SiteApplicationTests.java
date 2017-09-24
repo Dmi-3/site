@@ -3,6 +3,8 @@ package com.site;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.site.book.Book;
+import com.site.book.BookRepository;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;

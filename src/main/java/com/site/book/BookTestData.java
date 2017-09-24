@@ -1,7 +1,8 @@
-package com.site;
+package com.site.book;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +31,7 @@ public class BookTestData {
         bookRepository.save(new Book("Java", 1100));
     }
 
-    /*@PostConstruct
+    @PostConstruct
     public void initTestDataInOldFashionWay() {
         try(Connection connection = dataSource.getConnection()) {
             Statement statement = connection.createStatement();
@@ -38,6 +39,6 @@ public class BookTestData {
         } catch (SQLException e) {
             log.error("Failed to init test");
         }
-    }*/
+    }
 
 }

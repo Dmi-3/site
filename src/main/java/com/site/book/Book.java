@@ -1,4 +1,4 @@
-package com.site;
+package com.site.book;
 
 import lombok.Data;
 import org.springframework.hateoas.Identifiable;
@@ -26,11 +26,6 @@ public class Book implements Identifiable<Long> {
     public Book(String name, int size) {
         this.name = name;
         this.size = size;
-    }
-
-    @Override
-    public Long getId() {
-        return id;
     }
 
     public String getName() {

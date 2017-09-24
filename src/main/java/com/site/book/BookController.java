@@ -1,4 +1,4 @@
-package com.site;
+package com.site.book;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +26,12 @@ public class BookController {
         bookRepository.save(book);
     }
 
-    @RequestMapping(value = "/books/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/books/lite", method = RequestMethod.GET)
     public List<Book> get() {
         List<Book> result = new ArrayList<>();
-        bookRepository.findAll().forEach(result::add);
+
+        bookRepository.findAll().forEach(book -> result.add(book));
+        //bookRepository.findAll().forEach(result::add);
         return result;
     }
 
