@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+/* Эквивалентно @Configuration, @EnableAutoConfiguration и @ComponentScan в Spring:
+* - автоматическая конфигурация, автоматическое нахождение beans ... */
 public class SiteApplication {
 
 	public static void main(String[] args) {
