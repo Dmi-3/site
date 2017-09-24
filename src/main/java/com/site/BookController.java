@@ -9,11 +9,12 @@ import java.util.List;
 
 @Slf4j
 @RestController
+/** эквивалентно аннотациям @Controller, @ResponseBody: */
 public class BookController {
 
     private final BookRepository bookRepository;
 
-    @Autowired //  filling immediately (after creation)
+    @Autowired //  автоматический поиск и присвоение
     public BookController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
