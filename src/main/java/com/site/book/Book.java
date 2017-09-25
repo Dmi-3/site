@@ -31,4 +31,9 @@ public class Book implements Identifiable<Long> {
     public String getName() {
         return name;
     }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
 }

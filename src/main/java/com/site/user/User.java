@@ -28,4 +28,13 @@ public class User implements Identifiable<Long> {
 
     public User() {
     }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

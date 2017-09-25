@@ -1,6 +1,6 @@
 'use strict';
 
-function createHero() {
+function createBook() {
     var heroName = $("#book-name").val();
 
     var request = {
