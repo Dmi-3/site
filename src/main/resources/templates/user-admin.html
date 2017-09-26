@@ -24,11 +24,22 @@
     </li>
 </ul>
 
-<h2>Add hero</h2>
+<h2>Add book</h2>
 <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Book name</span>
-    <input id="book-name" type="text" class="form-control" aria-describedby="basic-addon1"/>
+    <input id="book-name-add" type="text" class="form-control" aria-describedby="basic-addon1" required/>
+    <input id="book-size-add" type="text" class="form-control" aria-describedby="basic-addon1" required/>
 </div>
 <button type="button" class="btn btn-default" onclick="createBook()">Add new</button>
+</body>
+</html>
+
+
+<h2>Delete book</h2>
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon2">Book name</span>
+    <input id="book-name-delete" type="text" class="form-control" aria-describedby="basic-addon1" required/>
+</div>
+<button type="button" class="btn btn-default" onclick="deleteBook()">Delete book</button>
 </body>
 </html>

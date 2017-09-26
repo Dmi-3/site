@@ -18,10 +18,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+        http.csrf().disable(); // disable csrf
         http
                 .authorizeRequests()
-                .antMatchers("/**/*.html", "/**/*.css", "/**/*.js").permitAll()
+                .antMatchers("/**/*.html", "/**/*.css", "/**/*.js").permitAll() // allow to get file
+                .antMatchers("/books/lite","/books/{id}/{name}").hasRole("USER")
                 //.anyRequest().authenticated() //allow to make request on any other url for any logged users
                 .anyRequest().hasRole("ADMIN")  //allow only for logged user with ADMIN role
                 .and()
