@@ -41,12 +41,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                 Collection<SimpleGrantedAuthority> authorities = new HashSet<>();
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
                 return new UsernamePasswordAuthenticationToken(login, password, authorities);
+            } else {
+                Collection<SimpleGrantedAuthority> authorities = new HashSet<>();
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                return new UsernamePasswordAuthenticationToken(login, password, authorities);
             }
-//            else {
-//                Collection<SimpleGrantedAuthority> authorities = new HashSet<>();
-//                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-//                return new UsernamePasswordAuthenticationToken(login, password, authorities);
-//            }
 
         return null;
     }

@@ -14,6 +14,14 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException, ServletException {
-        httpServletResponse.sendRedirect("/user-admin");
+
+        if (httpServletRequest.getParameter("username").equals("admin"))
+        {
+            httpServletResponse.sendRedirect("/user-admin");
+        }
+        else {
+            httpServletResponse.sendRedirect("/user");
+        }
+
     }
 }

@@ -22,13 +22,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/**/*.html", "/**/*.css", "/**/*.js").permitAll() // allow to get file
-                .antMatchers("/books/lite","/books/{id}/{name}").hasRole("USER")
+                .antMatchers("/books/lite","/books/{id}/{name}").permitAll()
+                .antMatchers("/user").hasRole("USER")
                 //.anyRequest().authenticated() //allow to make request on any other url for any logged users
                 .anyRequest().hasRole("ADMIN")  //allow only for logged user with ADMIN role
                 .and()
                 .formLogin().loginPage("/login").successHandler(customAuthenticationSuccessHandler).permitAll()
                 .and()
                 .logout().permitAll();
+
+
     }
 
     @Autowired
