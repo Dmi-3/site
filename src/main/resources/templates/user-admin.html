@@ -5,37 +5,62 @@
 
     <link rel="stylesheet" type="text/css"
           href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 
     <script type="text/javascript"
             src="webjars/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript"
             src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript"
-            src="main.js"></script>
-
+            src="/js/main.js"></script>
+    <div class="col-md-2 col-md-offset-10">
+        <h2>Logout</h2>
+        <form name="f" th:action="@{/logout}" method="post">
+            <button type="submit" class="btn">Log out</button>
+        </form>
+    </div>
 </head>
 <body>
-<h3>Book</h3>
-
 <!--list-->
-<ul class="list-group" th:unless="${#lists.isEmpty(books)}">
-    <li class="list-group-item" th:each="book : ${books}">
-        <button type="button" class="btn btn-default" onclick="deleteBook()">Delete</button>
-        <span th:text="${book.id}"></span>
-        <span th:text="${book.name}"></span>
-    </li>
-</ul>
-
-
-<!--add-->
-<h2>Add book</h2>
-<div class="input-group">
-    <span class="input-group-addon" id="basic-addon1" aria-required="true">Book name</span>
-    <input id="book-name-add" type="text" class="form-control" aria-describedby="basic-addon1"/>
-    <span class="input-group-addon" id="basic-addon2" aria-required="true">Book size</span>
-    <input id="book-size-add" type="text" class="form-control" aria-describedby="basic-addon2"/>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h3>Book</h3>
+        <ul class="list-group" th:unless="${#lists.isEmpty(books)}">
+            <li class="list-group-item" th:each="book : ${books}">
+                <button type="button" class="btn btn-default" onclick="deleteBook()">Delete</button>
+                <span class="book-id" th:text="${book.id}"></span>
+                <span class="book-name" th:text="${book.name}"></span>
+                <span class="book-size" th:text="${book.size}"></span>
+            </li>
+        </ul>
+    </div>
 </div>
-<button type="button" class="btn btn-default" onclick="createBook()">Add new</button>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-1">
+        <h3>Add Book</h3>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1" aria-required="true">Book name</span>
+            <input id="book-name-add" type="text" class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-4 col-md-offset-1">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon2" aria-required="true">Book size</span>
+            <input id="book-size-add" type="text" class="form-control" aria-describedby="basic-addon2"/>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-4 col-md-offset-1">
+        <button type="button" class="btn btn-default" onclick="createBook()">Add new</button>
+    </div>
+</div>
+
 
 </body>
 </html>

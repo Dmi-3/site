@@ -4,28 +4,37 @@
     <meta charset="UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 
     <script type="text/javascript"
             src="webjars/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript"
             src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript"
+            src="/js/main.js"></script>
+    <div class="col-md-2 col-md-offset-10">
+        <h2>Logout</h2>
+        <form name="f" th:action="@{/logout}" method="post">
+            <button type="submit" class="btn">Log out</button>
+        </form>
+    </div>
 </head>
 <body>
-<h3>Book</h3>
+<!--list-->
 
-<!--<ul th:unless="${#lists.isEmpty(books)}">-->
-    <!--<li th:each="book:$(books)">-->
-        <!--<span th:text="${book.name}"/>-->
-    <!--</li>-->
-<!--</ul>-->
+<div class="col-md-10 col-md-offset-1">
+    <h3>Book</h3>
+    <ul class="list-group" th:unless="${#lists.isEmpty(books)}">
+        <li class="list-group-item" th:each="book : ${books}">
+            <button type="button" class="btn btn-default" onclick="deleteBook()">Delete</button>
+            <span class="book-id" th:text="${book.id}"></span>
+            <span class="book-name" th:text="${book.name}"></span>
+            <span class="book-size" th:text="${book.size}"></span>
+        </li>
+    </ul>
+</div>
 
-<ul class="list-group" th:unless="${#lists.isEmpty(books)}">
-    <li class="list-group-item" th:each="book : ${books}">
-        <!--<span class="badge" th:text="${book.size}">1</span>-->
-        <span th:text="${book.name}"></span>
-    </li>
-</ul>
+
 </body>
 </html>

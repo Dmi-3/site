@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/**/*.html", "/**/*.css", "/**/*.js").permitAll() // allow to get file
                 .antMatchers("/books/lite","/books/{id}/{name}").permitAll()
-                .antMatchers("/user").hasRole("USER")
+                .antMatchers("/user").authenticated()
                 //.anyRequest().authenticated() //allow to make request on any other url for any logged users
                 .anyRequest().hasRole("ADMIN")  //allow only for logged user with ADMIN role
                 .and()

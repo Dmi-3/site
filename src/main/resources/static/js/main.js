@@ -27,7 +27,7 @@ function createBook() {
 }
 
 function deleteBook() {
-    var bookId = $("#book-id-delete").val();
+    var bookId = $(this).closest('span').html().trim();
     var request = {
         type: "DELETE",
         url: "/books/delete/",
@@ -36,12 +36,12 @@ function deleteBook() {
             'Content-Type': 'application/json;charset=UTF-8'
         },
         data: JSON.stringify({
-            name: bookId,
+            id: bookId
         })
     };
     $.ajax(request)
         .done(function () {
-            alert("Book created");
+            alert("Book deleted");
         })
         .fail(function (response) {
             alert("Error: " + response.responseJSON.message);
