@@ -17,6 +17,7 @@ public class UserTestData {
     @PostConstruct
     public void initTestData() {
         userRepository.save(new User("admin", "admin"));
+        userRepository.save(new User("user", "user"));
         //in real application password should be encrypted
     }
 }

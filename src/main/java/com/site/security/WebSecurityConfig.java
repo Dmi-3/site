@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    CustomAuthenticationProvider customAuthenticationProvider;
+    CustomAuthenticationProvider customAuthenticationProvider; // allows to turn to DB (to gets users)
 
     @Autowired
     CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
