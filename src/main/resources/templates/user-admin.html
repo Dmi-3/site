@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <script type="text/javascript"
             src="webjars/jquery/1.11.1/jquery.min.js"></script>
@@ -12,33 +12,34 @@
             src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript"
             src="main.js"></script>
+
 </head>
 <body>
 <h3>Book</h3>
 
-
-<h2>All books</h2>
-<ul th:unless="${#lists.isEmpty(books)}">
-    <li th:each="book:$(books)">
-        <span th:text="${book.name}"/>
+<!--list-->
+<ul class="list-group" th:unless="${#lists.isEmpty(books)}">
+    <li class="list-group-item" th:each="book : ${books}">
+        <span th:text="${book.name}"></span>
     </li>
 </ul>
 
+
+<!--add-->
 <h2>Add book</h2>
 <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">Book name</span>
-    <input id="book-name-add" type="text" class="form-control" aria-describedby="basic-addon1" required/>
-    <input id="book-size-add" type="text" class="form-control" aria-describedby="basic-addon1" required/>
+    <span class="input-group-addon" id="basic-addon1" aria-required="true">Book name</span>
+    <input id="book-name-add" type="text" class="form-control" aria-describedby="basic-addon1"/>
+    <span class="input-group-addon" id="basic-addon2" aria-required="true">Book size</span>
+    <input id="book-size-add" type="text" class="form-control" aria-describedby="basic-addon2"/>
 </div>
 <button type="button" class="btn btn-default" onclick="createBook()">Add new</button>
-</body>
-</html>
 
-
+<!--delete-->
 <h2>Delete book</h2>
-<div class="input-group">
-    <span class="input-group-addon" id="basic-addon2">Book name</span>
-    <input id="book-name-delete" type="text" class="form-control" aria-describedby="basic-addon1" required/>
+<div class="input-group" th:unless="${#lists.isEmpty(books)}">
+    <span class="input-group-addon" id="basic-addon3" aria-required="true">Book name</span>
+    <!--<input id="book-id-delete" type="" class="form-control" aria-describedby="basic-addon3"/>-->
 </div>
 <button type="button" class="btn btn-default" onclick="deleteBook()">Delete book</button>
 </body>

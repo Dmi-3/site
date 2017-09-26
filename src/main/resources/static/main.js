@@ -26,16 +26,16 @@ function createBook() {
 }
 
 function deleteBook() {
-    var bookName = $("#book-name-delete").val();
+    var bookId = $("#book-id-delete").val();
     var request = {
         type: "DELETE",
-        url: "/books/delete/{id}",
+        url: "/books/delete/",
         headers: {
             'Accept': 'application/json;charset=UTF-8',
             'Content-Type': 'application/json;charset=UTF-8'
         },
         data: JSON.stringify({
-            name: bookName,
+            name: bookId,
         })
     };
     $.ajax(request)
