@@ -11,17 +11,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    CustomAuthenticationProvider customAuthenticationProvider;
+    CustomAuthenticationProvider customAuthenticationProvider; // allows to turn to DB (to gets users)
 
     @Autowired
     CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+        http.csrf().disable(); // disable csrf
         http
                 .authorizeRequests()
-                .antMatchers("/**/*.html", "/**/*.css", "/**/*.js").permitAll()
+                .antMatchers("/**/*.html", "/**/*.css", "/**/*.js").permitAll() // allow to get file
+                .antMatchers("/books/lite","/books/{id}/{name}").hasRole("USER")
                 //.anyRequest().authenticated() //allow to make request on any other url for any logged users
                 .anyRequest().hasRole("ADMIN")  //allow only for logged user with ADMIN role
                 .and()

@@ -1,7 +1,6 @@
 package com.site.security;
 
 
-
 import com.site.user.User;
 import com.site.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +36,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     private UsernamePasswordAuthenticationToken authenticate(String login, String password) throws AuthenticationException {
         User user = userRepository.findByLogin(login);
 
-        if (user != null && user.getPassword().equals(password)) {
-            Collection<SimpleGrantedAuthority> authorities = new HashSet<>();
-            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-            return new UsernamePasswordAuthenticationToken(login, password, authorities);
-        }
+        if (user != null && user.getPassword().equals(password))
+            if (login.toLowerCase().equals("admin")) {
+                Collection<SimpleGrantedAuthority> authorities = new HashSet<>();
+                authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+                return new UsernamePasswordAuthenticationToken(login, password, authorities);
+            } else {
+                Collection<SimpleGrantedAuthority> authorities = new HashSet<>();
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                return new UsernamePasswordAuthenticationToken(login, password, authorities);
+            }
 
         return null;
     }
