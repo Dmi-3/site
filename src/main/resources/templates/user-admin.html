@@ -20,6 +20,8 @@
 <!--list-->
 <ul class="list-group" th:unless="${#lists.isEmpty(books)}">
     <li class="list-group-item" th:each="book : ${books}">
+        <button type="button" class="btn btn-default" onclick="deleteBook()">Delete</button>
+        <span th:text="${book.id}"></span>
         <span th:text="${book.name}"></span>
     </li>
 </ul>
@@ -35,12 +37,5 @@
 </div>
 <button type="button" class="btn btn-default" onclick="createBook()">Add new</button>
 
-<!--delete-->
-<h2>Delete book</h2>
-<div class="input-group" th:unless="${#lists.isEmpty(books)}">
-    <span class="input-group-addon" id="basic-addon3" aria-required="true">Book name</span>
-    <!--<input id="book-id-delete" type="" class="form-control" aria-describedby="basic-addon3"/>-->
-</div>
-<button type="button" class="btn btn-default" onclick="deleteBook()">Delete book</button>
 </body>
 </html>

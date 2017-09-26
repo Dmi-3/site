@@ -1,5 +1,6 @@
 'use strict';
 
+
 function createBook() {
     var bookName = $("#book-name-add").val();
     var bookSize = $("#book-size-add").val();
