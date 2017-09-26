@@ -11,7 +11,7 @@
     <script type="text/javascript"
             src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript"
-            src="main.js"></script>
+            src="/static/js/main.js"></script>
 
 </head>
 <body>
@@ -20,7 +20,7 @@
 <!--list-->
 <ul class="list-group" th:unless="${#lists.isEmpty(books)}">
     <li class="list-group-item" th:each="book : ${books}">
-        <button type="button" class="btn btn-default" onclick="deleteBook()">Delete</button>
+        <button type="button" class="btn btn-default" onclick="javascript:deleteBook()">Delete</button>
         <span th:text="${book.id}"></span>
         <span th:text="${book.name}"></span>
     </li>
@@ -35,7 +35,7 @@
     <span class="input-group-addon" id="basic-addon2" aria-required="true">Book size</span>
     <input id="book-size-add" type="text" class="form-control" aria-describedby="basic-addon2"/>
 </div>
-<button type="button" class="btn btn-default" onclick="createBook()">Add new</button>
+<button type="button" class="btn btn-default" onclick="javascript:createBook()">Add new</button>
 
 </body>
 </html>
