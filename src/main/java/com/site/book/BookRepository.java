@@ -17,6 +17,6 @@ public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
     @Query("select book from Book book where book.id=:id and book.size=:size")
     Book findByIdAndSize(@Param("id") Long id, @Param("size") int size);
 
-    @Query("update book set book.name=:name, book.size=:size where book.id=:id ")
-    void updateNameAndSize(@Param("name") String name, @Param("size") int size, @Param("id") Long id);
+//    @Query("update book set book.name=:name, book.size=:size where book.id=:id ")
+//    void updateNameAndSize(@Param("name") String name, @Param("size") int size, @Param("id") Long id);
 }
