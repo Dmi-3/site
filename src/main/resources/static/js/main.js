@@ -26,16 +26,21 @@ function createBook() {
 }
 
 function deleteBook() {
-    var bookId = $(this).closest('span').html().trim();
+    var bookId = $("#book-id-view").text();
+    var bookName = $("#book-name-view").text();
+    var bookSize = $("#book-size-view").text();
+
     var request = {
         type: "DELETE",
-        url: "/books/delete/",
+        url: "/bookDelete",
         headers: {
             'Accept': 'application/json;charset=UTF-8',
             'Content-Type': 'application/json;charset=UTF-8'
         },
         data: JSON.stringify({
-            id: bookId
+            id: bookId,
+            name: bookName,
+            size: bookSize
         })
     };
     $.ajax(request)
@@ -45,6 +50,31 @@ function deleteBook() {
         .fail(function (response) {
             alert("Error: " + response.responseJSON.message);
         });
+}
 
+function updateBook() {
+    var bookId = $("#book-id-update").text();
+    var bookName = $("#book-name-update").val();
+    var bookSize = $("#book-size-update").val();
 
+    var request = {
+        type: "POST",
+        url: "/bookUniqueUpdate",
+        headers: {
+            'Accept': 'application/json;charset=UTF-8',
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        data: JSON.stringify({
+            id: bookId,
+            name: bookName,
+            size: bookSize
+        })
+    };
+    $.ajax(request)
+        .done(function () {
+            alert("Book updated");
+        })
+        .fail(function (response) {
+            alert("Error: " + response.responseJSON.message);
+        });
 }

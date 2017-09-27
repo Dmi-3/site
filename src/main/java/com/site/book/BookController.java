@@ -19,12 +19,27 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    @RequestMapping(value = "/booksUniqueCreate", method = RequestMethod.POST) // to map URLs to controller methods in different ways
+    @RequestMapping(value = "/booksUniqueCreate", method = RequestMethod.POST)
+    // to map URLs to controller methods in different ways
     public void create(@RequestBody Book book) {
         Book bookDuplicate = bookRepository.findByName(book.getName());
         if (bookDuplicate != null)
             throw new RuntimeException("Found duplicate during exception");
         bookRepository.save(book);
+    }
+
+    @RequestMapping(value = "/bookDelete", method = RequestMethod.DELETE)
+    public void delete(@RequestBody Book book) { // value works as a parameter
+        if (!bookRepository.exists(book.getId()))
+            throw new RuntimeException("The book does not exist!");
+        bookRepository.delete(book.getId());
+    }
+
+    @RequestMapping(value = "/bookUniqueUpdate", method = RequestMethod.POST)
+    public void update(@RequestBody Book book) { // value works as a parameter
+        if (!bookRepository.exists(book.getId()))
+            throw new RuntimeException("The book does not exist!");
+        bookRepository.updateNameAndSize(book.getName(), book.getSize(), book.getId());
     }
 
     @RequestMapping(value = "/books/lite", method = RequestMethod.GET)
@@ -40,14 +55,5 @@ public class BookController {
     public Book getByIdAndName(@PathVariable("id") Long id, @PathVariable String name) {
         return bookRepository.findByIdAndName(id, name);
 
-    }
-
-    @RequestMapping(value = "/books/delete/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("id") Long id) { // value works as a parameter
-        Book book = bookRepository.findOne(id);
-        if (book != null) {
-            bookRepository.delete(id);
-        }
-        else throw new RuntimeException("The Book does not exist");
     }
 }

@@ -30,6 +30,25 @@ public class BookTestData {
         bookRepository.save(new Book("C#", 1000));
         bookRepository.save(new Book("C and C++", 900));
         bookRepository.save(new Book("Java", 1100));
+        bookRepository.save(new Book("C# (v2)", 1000));
+        bookRepository.save(new Book("C and C++ (v2)", 900));
+        bookRepository.save(new Book("Limbo", 1100));
+        bookRepository.save(new Book("Scilab", 1000));
+        bookRepository.save(new Book("Object Pascal", 900));
+        bookRepository.save(new Book("Groovy", 1100));
+        bookRepository.save(new Book("Visual Basic", 1000));
+        bookRepository.save(new Book("PHP", 900));
+        bookRepository.save(new Book("Python", 1100));
+        bookRepository.save(new Book("Zonnon", 1000));
+        bookRepository.save(new Book("JavaScript", 900));
+        bookRepository.save(new Book("MC#", 1100));
+        bookRepository.save(new Book("Delphi", 1000));
+        bookRepository.save(new Book("C++/CLI", 900));
+        bookRepository.save(new Book("C++", 1100));
+        bookRepository.save(new Book("MC#", 1100));
+        bookRepository.save(new Book("Dylan", 1000));
+        bookRepository.save(new Book("OCaml", 900));
+        bookRepository.save(new Book("Scheme", 1100));
     }
 
     @PostConstruct

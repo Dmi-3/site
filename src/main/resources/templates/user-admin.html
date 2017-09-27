@@ -13,6 +13,8 @@
             src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript"
             src="/js/main.js"></script>
+    <script type="text/javascript"
+            src="/js/pagination.js"></script>
     <div class="col-md-2 col-md-offset-10">
         <h2>Logout</h2>
         <form name="f" th:action="@{/logout}" method="post">
@@ -21,27 +23,109 @@
     </div>
 </head>
 <body>
-<!--list-->
+
+<!--VIEW/DELETE/UPDATE-->
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <h3>Book</h3>
-        <ul class="list-group" th:unless="${#lists.isEmpty(books)}">
+        <ul class="list-group pagination-sm" th:unless="${#lists.isEmpty(books)}">
             <li class="list-group-item" th:each="book : ${books}">
-                <button type="button" class="btn btn-default" onclick="deleteBook()">Delete</button>
-                <span class="book-id" th:text="${book.id}"></span>
-                <span class="book-name" th:text="${book.name}"></span>
-                <span class="book-size" th:text="${book.size}"></span>
+                <button type="button"
+                        class="btn btn-default"
+                        onclick="deleteBook()">Delete
+                </button>
+                <a class="btn btn-default"
+                   href="#"
+                   data-toggle="modal"
+                   data-target="#basicModal">Update</a>
+                <span class="book-id"
+                      id="book-id-view" th:text="${book.id}"></span>
+                <span class="book-name"
+                      id="book-name-view" th:text="${book.name}"></span>
+                <span class="book-size"
+                      id="book-size-view" th:text="${book.size}"></span>
+
+                <!--MODAL WINDOW-->
+                <div class="modal fade"
+                     id="basicModal"
+                     tabindex="-1"
+                     role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close"
+                                        type="button"
+                                        data-dismiss="modal">x
+                                </button>
+                                <h4 class="modal-title"
+                                    id="myModalLabel">Update the book:
+                                    <span class="book-id-update"
+                                          id="book-id-update" th:text="${book.id}"></span>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <h3>Add Book</h3>
+                                        <div class="input-group">
+                                            <span class="input-group-addon col-xs-20"
+                                                  id="basic-update1">New book name</span>
+                                            <input id="book-name-update"
+                                                   type="text"
+                                                   class="form-control"
+                                                   required="true"
+                                                   aria-describedby="basic-addon1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="input-group">
+                                            <span class="input-group-addon col-xs-20"
+                                                  id="basic-update2">New book size</span>
+                                            <input id="book-size-update"
+                                                   type="text"
+                                                   class="form-control"
+                                                   required="true"
+                                                   aria-describedby="basic-addon2"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default"
+                                        type="button"
+                                        data-dismiss="modal">Cancel
+                                </button>
+                                <button class="btn btn-primary"
+                                        type="button"
+                                        onclick="updateBook()">Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--MODAL WINDOW - END-->
+
             </li>
         </ul>
     </div>
 </div>
+<!--VIEW/DELETE/UPDATE - END -->
 
+<!--ADD-->
 <div class="row">
     <div class="col-md-4 col-md-offset-1">
         <h3>Add Book</h3>
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1" aria-required="true">Book name</span>
-            <input id="book-name-add" type="text" class="form-control" aria-describedby="basic-addon1"/>
+            <span class="input-group-addon col-xs-20"
+                  id="basic-addon1">Book name</span>
+            <input id="book-name-add"
+                   type="text"
+                   class="form-control"
+                   required="true"
+                   aria-describedby="basic-addon1"/>
         </div>
     </div>
 </div>
@@ -49,17 +133,26 @@
 <div class="row">
     <div class="col-md-4 col-md-offset-1">
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon2" aria-required="true">Book size</span>
-            <input id="book-size-add" type="text" class="form-control" aria-describedby="basic-addon2"/>
+            <span class="input-group-addon col-xs-20"
+                  id="basic-addon2">Book size</span>
+            <input id="book-size-add"
+                   type="text"
+                   class="form-control"
+                   required="true"
+                   aria-describedby="basic-addon2"/>
         </div>
     </div>
 </div>
 <br/>
 <div class="row">
     <div class="col-md-4 col-md-offset-1">
-        <button type="button" class="btn btn-default" onclick="createBook()">Add new</button>
+        <button type="button"
+                class="btn btn-group-vertical btn-primary col-xs-20"
+                onclick="createBook()">Add new
+        </button>
     </div>
 </div>
+<!--ADD - END-->
 
 
 </body>
